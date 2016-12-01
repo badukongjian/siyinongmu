@@ -8,10 +8,12 @@
         <script type="text/javascript" src="unitpngfix.js"></script>
 <![endif]-->
 </head>
+
 <body>
-
-
-
+    <span></span>
+<?php
+  require_once 'db.php';
+    ?>
 <script type="text/javascript" src="js/jquery.js"/></script>
 <script type="text/javascript">
 function banner(){	
@@ -140,14 +142,23 @@ function banner(){
 </div>
 
 <div class="lxwm_title">联系我们</div>
+<?php
+if($conn){
+    $sql="select * from company";
+    $result= mysqli_query($conn, $sql);
+    foreach ($result as $values){
+        echo '<div class="lxwm_tex">
+	<p><span style="font-family: 微软雅黑"><strong>'.$values['company'].'</strong><br />
+地址：'.$values['addr'].'<br />
+电话：'.$values['call_num'].'<br />
+传真：'.$values['sen'].'<br />
+E-mail：'.$values['email'].'</span></p>
+	</div>';
+    }
+}
 
-<div class="lxwm_tex">
-	<p><span style="font-family: 微软雅黑"><strong>玉林市思艺农牧科技有限公司</strong><br />
-地址：玉林市大平山镇<br />
-电话：8888-8888<br />
-传真：8888-9999<br />
-E-mail：</span></p>
-	</div>
+?>
+
 
 </div><div class="right">
 <div class="right_01">
@@ -163,24 +174,27 @@ E-mail：</span></p>
 	<span style="font-size:14px;font-family:NSimSun;">&nbsp; &nbsp; </span><span style="font-size:14px;"><span style="color:#337FE5;">扫一扫，添加思艺微信公众号</span></span>
 </p></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php
+if($conn){
+    $sql="select * from company";
+    $result= mysqli_query($conn, $sql);
+    foreach ($result as $values){
+        echo '<div class="foot">
+	<p>'.$values['company'].' 地址：'.$values['addr'].'<br />
+        电话：'.$values['call_num'].' &nbsp;传真：'.$values['sen'].'&nbsp; 技术支持：
+            <a href="" style="color:#FFFFFF">南阳草根</a>&nbsp;&nbsp;</p>
+</div>';
+    }
+}
 
- 
-  
-
-
-
-  
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="foot">
-	<p>玉林市思艺农牧科技有限公司 地址：玉林市大平山镇<br />
-电话：8888—8888 &nbsp;传真：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 技术支持：<a href="http://www.easy-biz.cn" style="color:#FFFFFF">易商网</a>&nbsp;&nbsp;</p>
-	</div>
-
+?>
+	
 <script type="text/javascript"> 
 
 // 设置为主页 
